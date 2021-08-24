@@ -11,7 +11,7 @@ def deck_listing():
     return {'Decks': [deck.to_dict() for deck in decks]}
 
 
-@deck_routes.route('/<int:id>/')
+@deck_routes.route('/<int:id>')
 def deck_info(id):
     deck = Deck.query.get(id)
     return {'Deck': deck.to_dict(), 'Cards': [card.to_dict() for card in deck.cards]}

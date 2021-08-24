@@ -10,4 +10,18 @@ class Deck(db.Model):
     rules = db.Column(db.Text)
     description = db.Column(db.Text)
 
-    cards = db.relationship("Card", back_populates="decks")
+    cards = db.relationship("Card", back_populates="deck")
+    user = db.relationship("User", back_populates="decks")
+    reviews = db.relationship("Review", back_populates="deck")
+    tags = db.relationship("Tag", back_populates="deck")
+    tokens = db.relationship("Token", back_populates="deck")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'owner_id': self.owner_id,
+            'game_name': self.game_name,
+            'splash_image': self.splash_image,
+            'rules': self.rules,
+            'description': self.description,
+        }

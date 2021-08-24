@@ -14,4 +14,17 @@ class Card(db.Model):
     card_text_slot_5 = db.Column(db.String(255))
 
     deck = db.relationship("Deck", back_populates="cards")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'game_id': self.game_id,
+            'card_name': self.card_name,
+            'art': self.art,
+            'card_text_slot_1': self.card_text_slot_1,
+            'card_text_slot_2': self.card_text_slot_2,
+            'card_text_slot_3': self.card_text_slot_3,
+            'card_text_slot_4': self.card_text_slot_4,
+            'card_text_slot_5': self.card_text_slot_5,
+        }
     

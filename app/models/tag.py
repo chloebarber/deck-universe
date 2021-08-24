@@ -8,3 +8,10 @@ class Tag(db.Model):
     tag_genre = db.Column(db.String(255))
 
     deck = db.relationship("Deck", back_populates="tags")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'game_id': self.game_id,
+            'tag_genre': self.tag_genre,
+        }

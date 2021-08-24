@@ -18,6 +18,7 @@ function HomePage() {
         <div>
             <h1>Welcome to Deck Universe!</h1>
             <a href='/decks'>Deck Listing</a>
+            <a href='/decks/1'>View Deck 1</a>
             <a href='/decks/new'>New Deck</a>
         </div>
 

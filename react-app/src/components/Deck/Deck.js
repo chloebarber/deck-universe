@@ -9,7 +9,7 @@ function DeckInfo(Deck){
     return (
         <div className="deckDiv">
             <h1>{Deck.game_name}</h1>
-            <div className="gameArt"></div>
+            <img className="gameArt" src={Deck.splash_image} alt="game image"/>
             <div className="gameDesc">{Deck.description}</div>
             <div className="gameRules">{Deck.rules}</div>
         </div>
@@ -19,6 +19,7 @@ function DeckInfo(Deck){
 function DeckView() {
 
     const decks = useSelector((state) => state.decks)
+    const user = useSelector((state) => state.session)
     const dispatch = useDispatch()
 
     const { deckId } = useParams();
@@ -27,9 +28,18 @@ function DeckView() {
         dispatch(getDeckById(deckId))
     }, [dispatch, deckId]);
 
+    function ownerOptions(){
+        return(
+            <div className="owner-options">
+                <button>Add Card</button>
+            </div>
+        )
+    }
+
     return (
-        <div>
+        <div className="DeckViewContainer">
             {decks.Deck && DeckInfo(decks.Deck)}
+            {user.id == decks.Deck?.owner_id && ownerOptions()}
             <h3>Cards</h3>
             <div className="cardsDiv">
                 {decks.Cards?.map(card => (

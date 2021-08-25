@@ -1,0 +1,7 @@
+.navbar-container{
+    background-color: darkslategray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 10px;
+}

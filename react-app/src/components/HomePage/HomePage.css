@@ -1,0 +1,11 @@
+.homepage-container{
+    display: flex;
+    /* background-color: red; */
+    height: 85vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeInfoBox{
+    background-color: grey;
+}

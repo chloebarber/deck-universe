@@ -7,7 +7,7 @@ export default function CardInfo(card){
     return (
         <div className="CardInfo">
             <div className="CardName">{card.card_name}</div>
-            <div className="art"></div>
+            <img className="art" src={card.splash_image}/>
             <div className="card_text_slot_1">{card.card_text_slot_1}</div>
             <div className="card_text_slot_2"></div>
             <div className="card_text_slot_3"></div>

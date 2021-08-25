@@ -15,11 +15,15 @@ function HomePage() {
     // }, [dispatch]);
 
     return (
-        <div>
-            <h1>Welcome to Deck Universe!</h1>
-            <a href='/decks'>Deck Listing</a>
-            <a href='/decks/1'>View Deck 1</a>
-            <a href='/decks/new'>New Deck</a>
+        <div className="homepage-container">
+            <div className="homeInfoBox">
+                <h1>Welcome to Deck Universe!</h1>
+                <a href='/decks'>Deck Listing</a><p/>
+                <a href='/decks/1'>View Deck 1</a><p/>
+                <a href='/decks/2'>View Deck 2</a><p/>
+                <a href='/decks/5'>View Deck 5</a><p/>
+                <a href='/decks/new'>New Deck</a>
+            </div>
         </div>
 
 

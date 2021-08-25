@@ -38,8 +38,8 @@ function DeckView() {
 
     return (
         <div className="DeckViewContainer">
-            {decks.Deck && DeckInfo(decks.Deck)}
-            {user.id == decks.Deck?.owner_id && ownerOptions()}
+            {decks?.Deck && DeckInfo(decks.Deck)}
+            {user.user?.id == decks.Deck?.owner_id && ownerOptions()}
             <h3>Cards</h3>
             <div className="cardsDiv">
                 {decks.Cards?.map(card => (

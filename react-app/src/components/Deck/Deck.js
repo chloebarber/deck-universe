@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDeckById, deleteCardThunk, editCardThunk } from '../../store/deck'
@@ -27,6 +27,7 @@ function DeckView() {
     
     //------------------------modal garbage starts here
     const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [cardToEdit, setCardToEdit] = useState();
 
     function openModal() {
         setIsOpen(true);
@@ -88,6 +89,12 @@ function DeckView() {
             )
     }
 
+    function editModalClicked(e, card){
+        e.preventDefault();
+        setCardToEdit(card);
+        openModal();
+    }
+
     function handleDelete(e, card) {
         e.preventDefault();
         return dispatch(deleteCardThunk(card.id))
@@ -109,7 +116,14 @@ function DeckView() {
         <div className="DeckViewContainer">
             {decks?.Deck && DeckInfo(decks.Deck)}
             {/* {user.user?.id == decks.Deck?.owner_id && ownerOptions()} */}
-            {changeCard("NEW")}
+            <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={closeModal}
+                        style={customStyles}
+                        contentLabel="Edit Card">
+                        <CardEdit card={cardToEdit}/>
+                    </Modal> 
+            <button onClick={(e) => editModalClicked(e, {})}>Edit Card</button>
             <h3>Cards</h3>
             <div className="cardsDiv">
                 <table className = "cardsListingTable">
@@ -132,7 +146,7 @@ function DeckView() {
                                     <td>{card.card_text_slot_3}</td>
                                     <td>{card.card_text_slot_4}</td>
                                     <td>{card.card_text_slot_5}</td>
-                                    <td>{changeCard("EDIT", card)}</td>
+                                    <td><button onClick={(e) => editModalClicked(e, card)}>Edit Card</button></td>
                                     {/* <td>{<button onClick={(e) => handleEdit(e, card)}>Edit</button>}</td>   */}
                                     {/* <td><button>Delete</button></td> */}
                                     <td><button onClick={(e) => handleDelete(e, card)}>Delete</button></td>    

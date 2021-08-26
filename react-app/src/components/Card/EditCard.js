@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { addCardThunk } from '../../store/deck'
 import './Card.css'
 
-export default function CardEdit(){
+export default function CardEdit(card){
 
     const dispatch = useDispatch();
 
@@ -52,12 +52,11 @@ export default function CardEdit(){
             <div className="card_text_slot_2"></div>
             <div className="card_text_slot_3"></div>
             <div className="card_text_slot_4"></div> */}
-            <label>Card Name</label>
-            <input type="text" onChange={createCard_name}/>
+            <input type="text" onChange={createCard_name} value={card.card_text_slot_1}/>
             <label>Art</label>
             <input type="text" onChange={createArt}/>
             <label>card_text_slot_1</label>
-            <input type="text" onChange={createCard_text_slot_1}/>
+            <input type="text" onChange={createCard_text_slot_1} value={card.card_text_slot_1}/>
             <label>card_text_slot_2</label>
             <input type="text" onChange={createCard_text_slot_2}/>
             <label>card_text_slot_3</label>

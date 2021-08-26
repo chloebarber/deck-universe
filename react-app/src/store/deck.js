@@ -1,6 +1,7 @@
 const GET_DECK = 'decks/GET_DECK'
 const ADD_CARD = 'card/ADD_CARD';
 const DELETE_CARD = 'card/DELETE_CARD'
+const EDIT_CARD = 'card/EDIT_CARD'
 
 const addCard = (card) => {
     return {
@@ -11,6 +12,13 @@ const addCard = (card) => {
 const deleteCard = (card) => {
     return {
         type: DELETE_CARD,
+        card,
+    }
+}
+
+const editCard = (card) => {
+    return {
+        type: EDIT_CARD,
         card,
     }
 }
@@ -48,6 +56,21 @@ export const addCardThunk = card => async (dispatch) => {
     return response
 }
 
+export const editCardThunk = card => async (dispatch) => {
+    const response = await fetch(`/api/cards/${card.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(card)
+    })
+    if (response.ok) {
+        const editedCard = await response.json();
+        dispatch(editCard(editedCard))
+    }
+    return response
+}
+
 export const deleteCardThunk = id => async (dispatch) => {
     const response = await fetch(`/api/cards/${id}`, {
         method: "DELETE",
@@ -81,6 +104,14 @@ export default function decks(state = initialState, action) {
             for (let i=0; i<newState.Cards.length; i++){
                 if (newState.Cards[i].id === action.card.id)
                     newState.Cards.splice(i, 1);
+            }
+            return newState;
+        }
+        case EDIT_CARD: {
+            newState = {...state};
+            for (let i=0; i<newState.Cards.length; i++){
+                if (newState.Cards[i].id === action.card.id)
+                    newState.Cards[i] = action.card
             }
             return newState;
         }

@@ -7,7 +7,7 @@ const addCard = (card) => ({
 })
 
 export const createCard = card => async (dispatch) => {
-    const response = await fetch(`/api/cards/`, {
+    const response = await fetch(`/api/cards`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -22,7 +22,7 @@ export const createCard = card => async (dispatch) => {
 }
 
 export const deleteCard = id => async (dispatch) => {
-    const response = await fetch(`/api/cards/${id}/`, {
+    const response = await fetch(`/api/cards/${id}`, {
         method: "DELETE",
     })
     if (response.ok) {
@@ -41,7 +41,7 @@ export default function cards(state = initialState, action) {
         case ADD_CARD: {
             newState = {}
             console.log(action.card);
-            newState.cards[action.card.id] = action.card
+            newState.cards = action.card
             return newState;
         }
         default:

@@ -5,7 +5,7 @@ from app.forms.edit_card_form import EditCardForm
 card_routes = Blueprint('card', __name__)
 
 
-@card_routes.route('/', methods=["POST"])
+@card_routes.route('', methods=["POST"])
 def add_card():
     form = EditCardForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -16,11 +16,11 @@ def add_card():
 
         db.session.add(new_card)
         db.session.commit()
-        return new_card.to_dict()
+        return {'card': new_card.to_dict()}
 
     return {'error': 'UH OH ERROR'}
 
-@card_routes.route('/<int:id>/', methods=['PUT'])
+@card_routes.route('/<int:id>', methods=['PUT'])
 def edit_card(id):
     form = EditCardForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -34,3 +34,12 @@ def edit_card(id):
         return oldCard.to_dict()
 
     return {'error': 'UH OH ERROR'}
+
+@card_routes.route('/<int:id>', methods=['DELETE'])
+def delete_card(id):
+
+    oldCard = Card.query.get(id)
+    db.session.delete(oldCard)
+    db.session.commit()
+
+    return oldCard.to_dict()

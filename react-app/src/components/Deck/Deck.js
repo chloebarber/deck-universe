@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getDeckById } from '../../store/deck'
+import { getDeckById, deleteCardThunk } from '../../store/deck'
 import CardInfo from '../Card/Card.js'
 import CardEdit from '../Card/EditCard';
 import './Deck.css';
@@ -43,11 +43,32 @@ function DeckView() {
             {user.user?.id == decks.Deck?.owner_id && ownerOptions()}
             <h3>Cards</h3>
             <div className="cardsDiv">
-                {decks.Cards?.map(card => (
-                    <>
-                    <CardInfo card={card} />
-                    </>
-                ))}
+                <table className = "cardsListingTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Card Text 1</th>
+                            <th>Card Text 2</th>
+                            <th>Card Text 3</th>
+                            <th>Card Text 4</th>
+                            <th>Card Text 5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {decks.Cards?.map(card => (
+                                <tr>
+                                    <td>{card.card_name}</td>
+                                    <td>{card.card_text_slot_1}</td>
+                                    <td>{card.card_text_slot_2}</td>
+                                    <td>{card.card_text_slot_3}</td>
+                                    <td>{card.card_text_slot_4}</td>
+                                    <td>{card.card_text_slot_5}</td>
+                                    <td><button>Edit</button></td>  
+                                    <td><button>Delete</button></td>    
+                                </tr>
+                    ))}
+                    </tbody>
+                </table>
             </div>
         </div>
 
@@ -56,3 +77,10 @@ function DeckView() {
     )
 }
 export default DeckView;
+
+//saving this for later
+// {decks.Cards?.map(card => (
+//     <>
+//     <CardInfo card={card} />
+//     </>
+// ))}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { createCard } from '../../store/card'
+import { addCardThunk } from '../../store/deck'
 import './Card.css'
 
 export default function CardEdit(){
@@ -31,7 +31,7 @@ export default function CardEdit(){
         e.preventDefault();
         const newCard = {
            user_id: sessionUser.id,
-           game__id: deck.id,
+           game_id: deck.id,
            card_name: card_name,
            art: art,
            card_text_slot_1: card_text_slot_1,
@@ -40,7 +40,7 @@ export default function CardEdit(){
            card_text_slot_4: card_text_slot_4,
            card_text_slot_5: card_text_slot_5,
         };
-        await dispatch(createCard(newCard))
+        await dispatch(addCardThunk(newCard))
     
     };
 

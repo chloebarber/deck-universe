@@ -42,7 +42,7 @@ function DeckView() {
         content: {
           top: '50%',
           left: '50%',
-          right: 'auto',
+          right: '50%',
           bottom: 'auto',
           marginRight: '-50%',
           transform: 'translate(-50%, -50%)',
@@ -121,9 +121,10 @@ function DeckView() {
                         onRequestClose={closeModal}
                         style={customStyles}
                         contentLabel="Edit Card">
+                        <button onClick={closeModal}>close</button>
                         <CardEdit card={cardToEdit}/>
                     </Modal> 
-            <button onClick={(e) => editModalClicked(e, {})}>Edit Card</button>
+            <button onClick={(e) => editModalClicked(e, {})}>New Card</button>
             <h3>Cards</h3>
             <div className="cardsDiv">
                 <table className = "cardsListingTable">

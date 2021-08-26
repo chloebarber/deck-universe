@@ -60,27 +60,28 @@ const CardEdit = (passedCard) => {
     };
     return (
         <form className="CardInfo CardEdit" onSubmit={handleSubmit}>
-            {/* <div className="CardName">{card.card_name}</div>
-            <img className="art" src={card.splash_image}/>
-            <div className="card_text_slot_1">{card.card_text_slot_1}</div>
-            <div className="card_text_slot_2"></div>
-            <div className="card_text_slot_3"></div>
-            <div className="card_text_slot_4"></div> */}
-            <label>Name</label>
-            <input type="text" onChange={createCard_name} value={card_name}/>
-            <label>Art</label>
-            <input type="text" onChange={createArt} value={art}/>
-            <label>card_text_slot_1</label>
-            <input type="text" onChange={createCard_text_slot_1} value={card_text_slot_1}/>
-            <label>card_text_slot_2</label>
-            <input type="text" onChange={createCard_text_slot_2} value={card_text_slot_2}/>
-            <label>card_text_slot_3</label>
-            <input type="text" onChange={createCard_text_slot_3} value={card_text_slot_3}/>
-            <label>card_text_slot_4</label>
-            <input type="text" onChange={createCard_text_slot_4} value={card_text_slot_4}/>
-            <label>card_text_slot_5</label>
-            <input type="text" onChange={createCard_text_slot_5} value={card_text_slot_5}/>
-
+            <div>
+                <label>Name: </label>
+                <input type="text" onChange={createCard_name} value={card_name}/>
+            </div><div>
+                <label>Art: </label>
+                <input type="text" onChange={createArt} value={art}/>
+            </div><div>
+                <label>card_text_slot_1: </label>
+                <input type="text" onChange={createCard_text_slot_1} value={card_text_slot_1}/>
+            </div><div>
+                <label>card_text_slot_2: </label>
+                <input type="text" onChange={createCard_text_slot_2} value={card_text_slot_2}/>
+            </div><div>
+                <label>card_text_slot_3: </label>
+                <input type="text" onChange={createCard_text_slot_3} value={card_text_slot_3}/>
+            </div><div>
+                <label>card_text_slot_4: </label>
+                <input type="text" onChange={createCard_text_slot_4} value={card_text_slot_4}/>
+            </div><div>
+                <label>card_text_slot_5: </label>
+                <input type="text" onChange={createCard_text_slot_5} value={card_text_slot_5}/>
+            </div>
             <button className='submitButton' type='submit'>Submit</button>
         </form>
     )

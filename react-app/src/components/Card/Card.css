@@ -5,3 +5,12 @@
     width: 100%;
     min-height: 200px;
 }
+
+.CardEdit{
+    display: flex;
+    flex-direction: column;
+}
+
+.CardEdit div{
+    margin: 10px;
+}

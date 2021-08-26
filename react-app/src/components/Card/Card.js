@@ -12,6 +12,9 @@ export default function CardInfo(card){
             <div className="card_text_slot_2"></div>
             <div className="card_text_slot_3"></div>
             <div className="card_text_slot_4"></div>
+            <div className="card_text_slot_5"></div>
         </div>
     )
 }
+
+

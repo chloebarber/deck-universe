@@ -10,7 +10,7 @@ const addCard = (card) => {
 }
 const deleteCard = (card) => {
     return {
-        type: ADD_CARD,
+        type: DELETE_CARD,
         card,
     }
 }
@@ -53,7 +53,7 @@ export const deleteCardThunk = id => async (dispatch) => {
         method: "DELETE",
     })
     if (response.ok) {
-        const oldCard = await response
+        const oldCard = await response.json()
         dispatch(deleteCard(oldCard))
     }
     return response
@@ -79,10 +79,9 @@ export default function decks(state = initialState, action) {
         case DELETE_CARD: {
             newState = {...state};
             for (let i=0; i<newState.Cards.length; i++){
-                if (newState.Cards[i] && (newState.Cards[i].id === action.card.card.id))
-                    delete newState.Cards[i];
+                if (newState.Cards[i].id === action.card.id)
+                    newState.Cards.splice(i, 1);
             }
-            alert("Card deleted!")
             return newState;
         }
         

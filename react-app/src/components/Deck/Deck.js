@@ -37,6 +37,14 @@ function DeckView() {
         )
     }
 
+    function handleDelete(e, card) {
+        e.preventDefault();
+        return dispatch(deleteCardThunk(card.id))
+            .catch(async (res) => {
+                await res.json();
+            });
+    }
+
     return (
         <div className="DeckViewContainer">
             {decks?.Deck && DeckInfo(decks.Deck)}
@@ -64,7 +72,8 @@ function DeckView() {
                                     <td>{card.card_text_slot_4}</td>
                                     <td>{card.card_text_slot_5}</td>
                                     <td><button>Edit</button></td>  
-                                    <td><button>Delete</button></td>    
+                                    {/* <td><button>Delete</button></td> */}
+                                    <td><button onClick={(e) => handleDelete(e, card)}>Delete</button></td>    
                                 </tr>
                     ))}
                     </tbody>

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDeckById } from '../../store/deck'
 import CardInfo from '../Card/Card.js'
+import CardEdit from '../Card/EditCard';
 import './Deck.css';
 
 function DeckInfo(Deck){
@@ -31,7 +32,7 @@ function DeckView() {
     function ownerOptions(){
         return(
             <div className="owner-options">
-                <button>Add Card</button>
+                <CardEdit/>
             </div>
         )
     }

@@ -2,7 +2,7 @@ const ADD_CARD = 'card/ADD_CARD';
 
 
 const addCard = (card) => ({
-    type: ADD_COMMENT,
+    type: ADD_CARD,
     card
 })
 

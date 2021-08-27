@@ -10,6 +10,7 @@ import { authenticate } from './store/session';
 import HomePage from './components/HomePage/HomePage';
 import DeckView from './components/Deck/Deck';
 import NavBar from './components/NavBar/NavBar';
+import DeckListing from './components/DeckListing/DeckListing';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,6 +45,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <HomePage />
+        </Route>
+        <Route path='/decks' exact={true} >
+          <DeckListing />
         </Route>
         <Route path='/decks/:deckId' exact={true} >
           <DeckView />

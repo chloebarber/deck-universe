@@ -1,0 +1,40 @@
+.DeckListingContainer{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: rgba(119, 119, 119, 0.64);
+    margin-bottom: 100px;
+}
+
+.deckItem{
+    border: 5px solid black;
+    border-radius: 20px;
+    display: grid;
+    grid-template: "pic name name name"
+                    "pic desc desc desc";
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.gameSplash{
+    grid-area: pic;
+    background-color: blue;
+    object-fit: contain;
+}
+
+.gameSplash > img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.gameName{
+    grid-area: name;
+    margin-bottom: 20px;
+    border-bottom: 2px solid black;
+}
+
+.gameDescription{
+    grid-area: desc;
+    margin-bottom: 20px;
+}

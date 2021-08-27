@@ -31,6 +31,7 @@ const loadDeck = (deck) => {
 }
 
 
+
 export const getDeckById = (deckId) => async (dispatch) => {
     const response = await fetch(`/api/decks/${deckId}`)
 
@@ -85,7 +86,7 @@ export const deleteCardThunk = id => async (dispatch) => {
 
 const initialState = {}
 
-export default function decks(state = initialState, action) {
+export default function SelectedDeck(state = initialState, action) {
     let newState;
     switch (action.type) {
 

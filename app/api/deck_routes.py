@@ -4,7 +4,7 @@ from app.models import Deck
 deck_routes = Blueprint('deck', __name__)
 
 
-@deck_routes.route('/')
+@deck_routes.route('')
 def deck_listing():
     decks = Deck.query.all()
     # print(games)

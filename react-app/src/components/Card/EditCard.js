@@ -14,7 +14,7 @@ const CardEdit = (passedCard) => {
     const dispatch = useDispatch();
 
     const sessionUser = useSelector(state => state.session.user)
-    const deck = useSelector((state) => state.decks?.Deck)
+    const deck = useSelector((state) => state.SelectedDeck?.Deck)
     
     const [card_name, setCard_name] = useState(passedCard?.card_name);
     const [art, setArt] = useState(passedCard?.art);
@@ -47,7 +47,10 @@ const CardEdit = (passedCard) => {
            card_text_slot_4: card_text_slot_4,
            card_text_slot_5: card_text_slot_5,
         };
-        if(passedCard.id){
+        if(!card_name){
+            alert("Cards at least have to have a name!")
+        }
+        else if(passedCard.id){
             newCard.id = passedCard.id
             console.log("edited a card")
             await dispatch(editCardThunk(newCard))

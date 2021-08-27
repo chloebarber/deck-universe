@@ -3,6 +3,7 @@ const ADD_CARD = 'card/ADD_CARD';
 const DELETE_CARD = 'card/DELETE_CARD'
 const EDIT_CARD = 'card/EDIT_CARD'
 
+
 const addCard = (card) => {
     return {
         type: ADD_CARD,
@@ -30,8 +31,6 @@ const loadDeck = (deck) => {
     }
 }
 
-
-
 export const getDeckById = (deckId) => async (dispatch) => {
     const response = await fetch(`/api/decks/${deckId}`)
 
@@ -40,6 +39,36 @@ export const getDeckById = (deckId) => async (dispatch) => {
         await dispatch(loadDeck(deck))
         return response
     }
+}
+
+export const createDeckThunk = deck => async (dispatch) => {
+    const response = await fetch(`/api/decks`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(deck)
+    })
+    if (response.ok) {
+        const newDeck = await response.json()
+        await dispatch(loadDeck(newDeck))
+    }
+    return response
+}
+
+export const editDeckThunk = deck => async (dispatch) => {
+    const response = await fetch(`/api/decks/${deck.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(deck)
+    })
+    if (response.ok) {
+        const editedDeck = await response.json();
+        dispatch(loadDeck(editedDeck))
+    }
+    return response
 }
 
 export const addCardThunk = card => async (dispatch) => {

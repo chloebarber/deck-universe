@@ -8,8 +8,6 @@ import './MyGames.css';
 
 
 function MyGames() {
-
-
     return (
         <div className="myGamesContainer">
             <h1>My Games</h1>

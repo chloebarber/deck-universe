@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getDeckListing } from '../../store/deckListing';
+import { getDeckListing, getFilteredDeckListing } from '../../store/deckListing';
 import './DeckListing.css';
 
 
@@ -11,7 +11,10 @@ function DeckListing(filter) {
 
 
     useEffect(() => {
-        dispatch(getDeckListing(filter))
+        if(filter)
+            dispatch(getFilteredDeckListing(filter))
+        else
+            dispatch(getDeckListing())
     }, [dispatch]);
 
     return (

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getDeckById, deleteCardThunk, editCardThunk } from '../../store/deck'
+import { getDeckById, deleteCardThunk, editCardThunk, editDeckThunk } from '../../store/deck'
 // import CardInfo from '../Card/Card.js'
 import CardEdit from '../Card/EditCard';
 import Modal from 'react-modal';
-import './Deck.css';
+import './DeckView.css';
 
 function DeckInfo(Deck){
     return (
@@ -13,7 +13,10 @@ function DeckInfo(Deck){
             <h1>{Deck.game_name}</h1>
             <img className="gameArt" src={Deck.splash_image} alt={Deck.game_name}/>
             <div className="gameDesc">{Deck.description}</div>
-            <div className="gameRules">{Deck.rules}</div>
+            <div className="gameRules">
+                <h1>Rules</h1>
+                <div>{Deck.rules}</div>
+            </div>
         </div>
     )
 }
@@ -105,7 +108,6 @@ function DeckView() {
 
     function handleEdit(e, card) {
         e.preventDefault();
-        card.card_text_slot_1 = "1111111"
         return dispatch(editCardThunk(card))
             .catch(async (res) => {
                 await res.json();
@@ -114,60 +116,68 @@ function DeckView() {
 
     function ownerOptions(flag, card){
         switch (flag){
-        case "NEW":
+        case "EDITDECK":
+            return (
+                <>
+                <button onClick={(e) => editModalClicked(e, {})}>Edit Deck</button>
+                </>
+            )
+        case "NEWCARD":
             return (<button onClick={(e) => editModalClicked(e, {})}>New Card</button>)
-        case "EDIT":
+        case "EDITCARD":
             return (<button onClick={(e) => editModalClicked(e, card)}>Edit Card</button>)
-        case "DELETE":
+        case "DELETECARD":
             return (<button onClick={(e) => handleDelete(e, card)}>Delete</button>)
         }
     }
 
     return (
-        <div className="DeckViewContainer">
-            {SelectedDeck?.Deck && DeckInfo(SelectedDeck.Deck)}
-                        <Modal
-                        isOpen={modalIsOpen}
-                        onRequestClose={closeModal}
-                        style={customStyles}
-                        contentLabel="Edit Card">
-                        <button onClick={closeModal}>close</button>
-                        <CardEdit card={cardToEdit}/>
-                    </Modal> 
-            {user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("NEW")}
-            <h3>Cards</h3>
-            <div className="cardsDiv">
-                <table className = "cardsListingTable">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Card Text 1</th>
-                            <th>Card Text 2</th>
-                            <th>Card Text 3</th>
-                            <th>Card Text 4</th>
-                            <th>Card Text 5</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {SelectedDeck.Cards?.map(card => (
-                                <tr>
-                                    <td>{card.card_name}</td>
-                                    <td>{card.card_text_slot_1}</td>
-                                    <td>{card.card_text_slot_2}</td>
-                                    <td>{card.card_text_slot_3}</td>
-                                    <td>{card.card_text_slot_4}</td>
-                                    <td>{card.card_text_slot_5}</td>
-                                    <td>{user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("EDIT", card)}</td>
-                                    {/* <td>{<button onClick={(e) => handleEdit(e, card)}>Edit</button>}</td>   */}
-                                    {/* <td><button>Delete</button></td> */}
-                                    <td>{user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("DELETE", card)}</td>    
-                                </tr>
-                    ))}
-                    </tbody>
-                </table>
+        <div className="DeckViewBackground">
+            <div className="DeckViewContainer">
+                {SelectedDeck?.Deck && DeckInfo(SelectedDeck.Deck)}
+                            <Modal
+                            isOpen={modalIsOpen}
+                            onRequestClose={closeModal}
+                            style={customStyles}
+                            contentLabel="Edit Card">
+                            <button onClick={closeModal}>close</button>
+                            <CardEdit card={cardToEdit}/>
+                        </Modal> 
+                {user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("EDITDECK")}
+                {user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("NEWCARD")}
+                <h3>Cards</h3>
+                <div className="cardsDiv">
+                    <table className = "cardsListingTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Card Text 1</th>
+                                <th>Card Text 2</th>
+                                <th>Card Text 3</th>
+                                <th>Card Text 4</th>
+                                <th>Card Text 5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {SelectedDeck.Cards?.map(card => (
+                                    <tr>
+                                        <td>{card.card_name}</td>
+                                        <td>{card.card_text_slot_1}</td>
+                                        <td>{card.card_text_slot_2}</td>
+                                        <td>{card.card_text_slot_3}</td>
+                                        <td>{card.card_text_slot_4}</td>
+                                        <td>{card.card_text_slot_5}</td>
+                                        <td>{user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("EDITCARD", card)}</td>
+                                        {/* <td>{<button onClick={(e) => handleEdit(e, card)}>Edit</button>}</td>   */}
+                                        {/* <td><button>Delete</button></td> */}
+                                        <td>{user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("DELETECARD", card)}</td>    
+                                    </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-
 
 
     )

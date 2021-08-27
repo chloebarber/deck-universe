@@ -21,12 +21,35 @@ function DeckInfo(Deck){
     )
 }
 
+function DeckEdit(Deck){
+    return (
+        <form className="deckDiv">
+            <h1>
+                <div>Edit Deck Name</div>
+                <input type="text" id="editDeckName">{Deck?.game_name}</input>
+            </h1>
+            <img className="gameArt" src={Deck?.splash_image} alt={Deck?.game_name}/>
+            <div className="gameDesc">
+                <h1>Edit Description</h1>
+                <textarea>{Deck?.description}</textarea>
+            </div>
+            <div className="gameRules">
+                <h1>Edit Rules</h1>
+                <textarea>{Deck?.rules}</textarea>
+            </div>
+            <button>Save</button>
+        </form>
+    )
+}
+
 // Modal.setAppElement('CardEdit');
 
-function DeckView() {
+function DeckView(flag) {
+    console.log(flag);
 
     const SelectedDeck = useSelector((state) => state.SelectedDeck)
     const user = useSelector((state) => state.session)
+    console.log(SelectedDeck);
     
     //------------------------modal garbage starts here
     const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -60,7 +83,12 @@ function DeckView() {
     const { deckId } = useParams();
 
     useEffect(() => {
-        dispatch(getDeckById(deckId))
+        if(flag.flag !== "NEW")
+            dispatch(getDeckById(deckId))
+        else{
+            SelectedDeck.Deck = {}
+            SelectedDeck.Cards = {}
+        }
     }, [dispatch, deckId]);
 
     function changeCard(option, card){
@@ -135,6 +163,7 @@ function DeckView() {
         <div className="DeckViewBackground">
             <div className="DeckViewContainer">
                 {SelectedDeck?.Deck && DeckInfo(SelectedDeck.Deck)}
+                {!SelectedDeck?.Deck && DeckEdit(SelectedDeck.Deck)}
                             <Modal
                             isOpen={modalIsOpen}
                             onRequestClose={closeModal}
@@ -159,7 +188,7 @@ function DeckView() {
                             </tr>
                         </thead>
                         <tbody>
-                        {SelectedDeck.Cards?.map(card => (
+                        {SelectedDeck?.Cards?.map(card => (
                                     <tr>
                                         <td>{card.card_name}</td>
                                         <td>{card.card_text_slot_1}</td>

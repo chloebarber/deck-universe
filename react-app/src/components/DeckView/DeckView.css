@@ -74,3 +74,17 @@ td {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.gameDesc textarea,
+.gameRules textarea,
+#editDeckName{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    resize: vertical;
+    background-color: whitesmoke;
+}
+
+#editDeckName{
+    font-size: xx-large;
+}

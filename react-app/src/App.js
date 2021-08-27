@@ -53,6 +53,9 @@ function App() {
         <Route path='/my-games' exact={true} >
           <MyGames />
         </Route>
+        <Route path='/decks/new' exact={true} >
+          <DeckView flag="NEW"/>
+        </Route>
         <Route path='/decks/:deckId' exact={true} >
           <DeckView />
         </Route>

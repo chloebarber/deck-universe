@@ -10,7 +10,7 @@ import './MyGames.css';
 function MyGames() {
     return (
         <div className="myGamesContainer">
-            <h1>My Games</h1>
+            <h1 className="myGamesTitle">My Games</h1>
             <DeckListing filter={"ME"}/>
         </div>
     )

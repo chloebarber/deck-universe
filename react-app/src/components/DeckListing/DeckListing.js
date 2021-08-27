@@ -5,18 +5,17 @@ import { getDeckListing } from '../../store/deckListing';
 import './DeckListing.css';
 
 
-function DeckListing() {
+function DeckListing(filter) {
     const DeckListing = useSelector((state) => state.DeckListing)
     const dispatch = useDispatch()
 
 
     useEffect(() => {
-        dispatch(getDeckListing())
+        dispatch(getDeckListing(filter))
     }, [dispatch]);
 
     return (
         <div className="DeckListingContainer">
-            <h1>poop</h1>
             {DeckListing.Decks?.map(deck => (
                 <div className="deckItem">
                     <a className="gameSplash" href={`/decks/${deck.id}`}>

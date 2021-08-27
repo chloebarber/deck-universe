@@ -112,11 +112,21 @@ function DeckView() {
             });
     }
 
+    function ownerOptions(flag, card){
+        switch (flag){
+        case "NEW":
+            return (<button onClick={(e) => editModalClicked(e, {})}>New Card</button>)
+        case "EDIT":
+            return (<button onClick={(e) => editModalClicked(e, card)}>Edit Card</button>)
+        case "DELETE":
+            return (<button onClick={(e) => handleDelete(e, card)}>Delete</button>)
+        }
+    }
+
     return (
         <div className="DeckViewContainer">
             {decks?.Deck && DeckInfo(decks.Deck)}
-            {/* {user.user?.id == decks.Deck?.owner_id && ownerOptions()} */}
-            <Modal
+                        <Modal
                         isOpen={modalIsOpen}
                         onRequestClose={closeModal}
                         style={customStyles}
@@ -124,7 +134,7 @@ function DeckView() {
                         <button onClick={closeModal}>close</button>
                         <CardEdit card={cardToEdit}/>
                     </Modal> 
-            <button onClick={(e) => editModalClicked(e, {})}>New Card</button>
+            {user.user?.id === decks.Deck?.owner_id && ownerOptions("NEW")}
             <h3>Cards</h3>
             <div className="cardsDiv">
                 <table className = "cardsListingTable">
@@ -147,10 +157,10 @@ function DeckView() {
                                     <td>{card.card_text_slot_3}</td>
                                     <td>{card.card_text_slot_4}</td>
                                     <td>{card.card_text_slot_5}</td>
-                                    <td><button onClick={(e) => editModalClicked(e, card)}>Edit Card</button></td>
+                                    <td>{user.user?.id === decks.Deck?.owner_id && ownerOptions("EDIT", card)}</td>
                                     {/* <td>{<button onClick={(e) => handleEdit(e, card)}>Edit</button>}</td>   */}
                                     {/* <td><button>Delete</button></td> */}
-                                    <td><button onClick={(e) => handleDelete(e, card)}>Delete</button></td>    
+                                    <td>{user.user?.id === decks.Deck?.owner_id && ownerOptions("DELETE", card)}</td>    
                                 </tr>
                     ))}
                     </tbody>

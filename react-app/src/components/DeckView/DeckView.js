@@ -10,9 +10,11 @@ import './DeckView.css';
 function DeckInfo(Deck){
     return (
         <div className="deckDiv">
-            <h1>{Deck.game_name}</h1>
             <img className="gameArt" src={Deck.splash_image} alt={Deck.game_name}/>
-            <div className="gameDesc">{Deck.description}</div>
+            <div className="gameDesc">
+                <h1>{Deck.game_name}</h1>
+                <div>{Deck.description}</div>
+            </div>
             <div className="gameRules">
                 <h1>Rules</h1>
                 <div>{Deck.rules}</div>
@@ -24,20 +26,20 @@ function DeckInfo(Deck){
 function DeckEdit(Deck){
     return (
         <form className="deckDiv">
-            <h1>
-                <div>Edit Deck Name</div>
-                <input type="text" id="editDeckName">{Deck?.game_name}</input>
-            </h1>
+            
             <img className="gameArt" src={Deck?.splash_image} alt={Deck?.game_name}/>
             <div className="gameDesc">
-                <h1>Edit Description</h1>
+                <h2>Edit Deck Name</h2>
+                <input type="text" id="editDeckName">{Deck?.game_name}</input>   
+                <h2>Edit Description</h2>
                 <textarea>{Deck?.description}</textarea>
             </div>
             <div className="gameRules">
-                <h1>Edit Rules</h1>
+                <h2>Edit Rules</h2>
                 <textarea>{Deck?.rules}</textarea>
+                <button id="saveButton">Save</button>
+                <button id="cancelButton">Cancel</button>
             </div>
-            <button>Save</button>
         </form>
     )
 }

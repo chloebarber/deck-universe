@@ -23,10 +23,17 @@
     display: grid;
     grid-template-areas: "pic desc desc"
                     "pic desc desc"
+                    "rules rules rules"
                     "rules rules rules";
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     gap: 5px;
+}
+
+.deckDiv > *{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .gameArt{
@@ -87,4 +94,25 @@ td {
 
 #editDeckName{
     font-size: xx-large;
+    text-align: center;
+}
+#saveButton,
+#cancelButton,
+#editDeckName{
+    width: 90%;
+}
+
+#saveButton{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    background-color: green;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#cancelButton{
+    background-color: red;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5px;
 }

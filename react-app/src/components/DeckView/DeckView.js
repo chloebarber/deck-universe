@@ -54,7 +54,7 @@ function DeckView(flag) {
     console.log(SelectedDeck);
     
     //------------------------modal garbage starts here
-    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [modalIsOpen, setIsOpen] = useState(false);
     const [cardToEdit, setCardToEdit] = useState();
 
     function openModal() {
@@ -92,35 +92,6 @@ function DeckView(flag) {
             SelectedDeck.Cards = {}
         }
     }, [dispatch, deckId]);
-
-    function changeCard(option, card){
-        if (option === "EDIT")
-            return(
-                <div className="edit-card">
-                    <button onClick={openModal}>Edit Card</button>
-                    <Modal
-                        isOpen={modalIsOpen}
-                        onRequestClose={closeModal}
-                        style={customStyles}
-                        contentLabel="Edit Card">
-                        <CardEdit card={card}/>
-                    </Modal> 
-                </div>
-            )
-        else if (option === "NEW")
-            return(
-                <div className="new-card">
-                    <button onClick={openModal}>New Card</button>
-                    <Modal
-                        isOpen={modalIsOpen}
-                        onRequestClose={closeModal}
-                        style={customStyles}
-                        contentLabel="New Card">
-                        <CardEdit/>
-                    </Modal>
-                </div>
-            )
-    }
 
     function editModalClicked(e, card){
         e.preventDefault();
@@ -215,9 +186,3 @@ function DeckView(flag) {
 }
 export default DeckView;
 
-//saving this for later
-// {decks.Cards?.map(card => (
-//     <>
-//     <CardInfo card={card} />
-//     </>
-// ))}

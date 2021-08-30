@@ -1,4 +1,5 @@
 const GET_DECK = 'decks/GET_DECK'
+const DELETE_DECK = 'decks/DELETE_DECK'
 const ADD_CARD = 'card/ADD_CARD';
 const DELETE_CARD = 'card/DELETE_CARD'
 const EDIT_CARD = 'card/EDIT_CARD'
@@ -31,6 +32,12 @@ const loadDeck = (deck) => {
     }
 }
 
+const deleteDeck = (deck) => {
+    return {
+        type: DELETE_DECK,
+    }
+}
+
 export const getDeckById = (deckId) => async (dispatch) => {
     const response = await fetch(`/api/decks/${deckId}`)
 
@@ -51,7 +58,7 @@ export const createDeckThunk = deck => async (dispatch) => {
     })
     if (response.ok) {
         const newDeck = await response.json()
-        await dispatch(loadDeck(newDeck))
+        await dispatch(deleteDeck())
     }
     return response
 }
@@ -67,6 +74,17 @@ export const editDeckThunk = deck => async (dispatch) => {
     if (response.ok) {
         const editedDeck = await response.json();
         dispatch(loadDeck(editedDeck))
+    }
+    return response
+}
+
+export const deleteDeckThunk = id => async (dispatch) => {
+    const response = await fetch(`/api/decks/${id}`, {
+        method: "DELETE",
+    })
+    if (response.ok) {
+        const oldDeck = await response.json()
+        dispatch(deleteCard(oldDeck))
     }
     return response
 }
@@ -143,6 +161,12 @@ export default function SelectedDeck(state = initialState, action) {
                 if (newState.Cards[i].id === action.card.id)
                     newState.Cards[i] = action.card
             }
+            return newState;
+        }
+
+        case DELETE_DECK: {
+            newState = {...state};
+            newState.SelectedDeck.Deck = null;
             return newState;
         }
         

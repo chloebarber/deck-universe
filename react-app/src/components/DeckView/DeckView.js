@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getDeckById, deleteCardThunk, editCardThunk, editDeckThunk } from '../../store/deck'
+import { getDeckById, deleteCardThunk, editCardThunk, editDeckThunk, deleteDeckThunk } from '../../store/deck'
 // import CardInfo from '../Card/Card.js'
 import CardEdit from '../Card/EditCard';
 import Modal from 'react-modal';
+import DeckEdit from './DeckEdit/DeckEdit'
 import './DeckView.css';
 
 function DeckInfo(Deck){
@@ -23,26 +24,7 @@ function DeckInfo(Deck){
     )
 }
 
-function DeckEdit(Deck){
-    return (
-        <form className="deckDiv">
-            
-            <img className="gameArt" src={Deck?.splash_image} alt={Deck?.game_name}/>
-            <div className="gameDesc">
-                <h2>Edit Deck Name</h2>
-                <input type="text" id="editDeckName">{Deck?.game_name}</input>   
-                <h2>Edit Description</h2>
-                <textarea>{Deck?.description}</textarea>
-            </div>
-            <div className="gameRules">
-                <h2>Edit Rules</h2>
-                <textarea>{Deck?.rules}</textarea>
-                <button id="saveButton">Save</button>
-                <button id="cancelButton">Cancel</button>
-            </div>
-        </form>
-    )
-}
+
 
 // Modal.setAppElement('CardEdit');
 
@@ -107,6 +89,14 @@ function DeckView(flag) {
             });
     }
 
+    function handleDeleteDeck(e) {
+        e.preventDefault();
+        return dispatch(deleteDeckThunk(SelectedDeck.Deck.id))
+            .catch(async (res) => {
+                await res.json();
+            });
+    }
+
     function handleEdit(e, card) {
         e.preventDefault();
         return dispatch(editCardThunk(card))
@@ -120,7 +110,8 @@ function DeckView(flag) {
         case "EDITDECK":
             return (
                 <>
-                <button onClick={(e) => editModalClicked(e, {})}>Edit Deck</button>
+                <button onClick={(e) => DeckEdit(SelectedDeck.Deck)}>Edit Deck</button>
+                <button onClick={(e) => handleDeleteDeck(e)}>Delete Deck</button>
                 </>
             )
         case "NEWCARD":
@@ -136,7 +127,7 @@ function DeckView(flag) {
         <div className="DeckViewBackground">
             <div className="DeckViewContainer">
                 {SelectedDeck?.Deck && DeckInfo(SelectedDeck.Deck)}
-                {!SelectedDeck?.Deck && DeckEdit(SelectedDeck.Deck)}
+                {!SelectedDeck?.Deck && <DeckEdit deck={SelectedDeck.Deck}/>}
                             <Modal
                             isOpen={modalIsOpen}
                             onRequestClose={closeModal}

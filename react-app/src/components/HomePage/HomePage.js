@@ -1,6 +1,7 @@
 import React from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { getGames } from '../../store/game'
+import { Link } from 'react-router-dom';
 import './HomePage.css';
 
 
@@ -18,11 +19,11 @@ function HomePage() {
         <div className="homepage-container">
             <div className="homeInfoBox">
                 <h1>Welcome to Deck Universe!</h1>
-                <a href='/decks'>Deck Listing</a><p/>
-                <a href='/decks/1'>View Deck 1</a><p/>
-                <a href='/decks/2'>View Deck 2</a><p/>
-                <a href='/decks/5'>View Deck 5</a><p/>
-                <a href='/decks/new'>New Deck</a>
+                <Link href='/decks'>Deck Listing</Link><p/>
+                <Link href='/decks/1'>View Deck 1</Link><p/>
+                <Link href='/decks/2'>View Deck 2</Link><p/>
+                <Link href='/decks/5'>View Deck 5</Link><p/>
+                <Link href='/decks/new'>New Deck</Link>
             </div>
         </div>
 

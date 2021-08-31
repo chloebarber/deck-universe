@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getDeckListing, getFilteredDeckListing } from '../../store/deckListing';
 import './DeckListing.css';
 
@@ -21,11 +22,11 @@ function DeckListing(filter) {
         <div className="DeckListingContainer">
             {DeckListing.Decks?.map(deck => (
                 <div className="deckItem">
-                    <a className="gameSplash" href={`/decks/${deck.id}`}>
+                    <Link className="gameSplash" href={`/decks/${deck.id}`}>
                         <img src={deck.splash_image} alt={deck.game_name}/>
-                    </a>
+                    </Link>
                     <h1 className="gameName">
-                        <a href={`/decks/${deck.id}`}>{deck.game_name}</a>
+                        <Link href={`/decks/${deck.id}`}>{deck.game_name}</Link>
                     </h1>
                     <div className="gameDescription">{deck.description}</div>
                 </div>

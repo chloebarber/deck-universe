@@ -6,6 +6,8 @@ import { createDeckThunk, editDeckThunk } from '../../../store/deck'
 
 
 function DeckEdit(passedDeck){
+    passedDeck = passedDeck?.deck
+    console.log(passedDeck)
     const sessionUser = useSelector(state => state.session.user)
     
     const [game_name, setGame_name] = useState(passedDeck?.game_name);

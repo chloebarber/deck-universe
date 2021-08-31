@@ -75,6 +75,13 @@ function DeckView(flag) {
         }
     }, [dispatch, deckId]);
 
+
+    const [toggleEditFlag, setToggleEditFlag] = useState(false);
+
+    function toggleEdit() {
+        setToggleEditFlag(!toggleEditFlag);
+      }
+
     function editModalClicked(e, card){
         e.preventDefault();
         setCardToEdit(card);
@@ -126,8 +133,9 @@ function DeckView(flag) {
     return (
         <div className="DeckViewBackground">
             <div className="DeckViewContainer">
-                {SelectedDeck?.Deck && DeckInfo(SelectedDeck.Deck)}
-                {!SelectedDeck?.Deck && <DeckEdit deck={SelectedDeck.Deck}/>}
+                <button onClick={toggleEdit}>Edit</button>
+                {SelectedDeck?.Deck && !toggleEditFlag && DeckInfo(SelectedDeck.Deck)}
+                {SelectedDeck?.Deck && toggleEditFlag && <DeckEdit deck={SelectedDeck.Deck}/>}
                             <Modal
                             isOpen={modalIsOpen}
                             onRequestClose={closeModal}

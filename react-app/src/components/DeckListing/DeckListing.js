@@ -22,11 +22,11 @@ function DeckListing(filter) {
         <div className="DeckListingContainer">
             {DeckListing.Decks?.map(deck => (
                 <div className="deckItem">
-                    <Link className="gameSplash" href={`/decks/${deck.id}`}>
+                    <Link className="gameSplash" to={`/decks/${deck.id}`}>
                         <img src={deck.splash_image} alt={deck.game_name}/>
                     </Link>
                     <h1 className="gameName">
-                        <Link href={`/decks/${deck.id}`}>{deck.game_name}</Link>
+                        <Link to={`/decks/${deck.id}`}>{deck.game_name}</Link>
                     </h1>
                     <div className="gameDescription">{deck.description}</div>
                 </div>

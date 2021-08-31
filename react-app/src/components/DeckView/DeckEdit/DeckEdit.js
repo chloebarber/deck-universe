@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { createDeckThunk, editDeckThunk } from '../../../store/deck'
+import { createDeckThunk, editDeckThunk } from '../../../store/deck';
+import '../DeckView.css'
 
 
 
@@ -36,7 +37,7 @@ function DeckEdit(passedDeck){
         if(!game_name){
             alert("Games at least have to have a name!")
         }
-        else if(passedDeck.id){
+        else if(passedDeck?.id){
             newDeck.id = passedDeck.id
             console.log("edited a game")
             await dispatch(editDeckThunk(newDeck))
@@ -49,24 +50,27 @@ function DeckEdit(passedDeck){
     };
     
     return (
-        <form className="deckDiv" onSubmit={handleSubmit}>
-            
-            <div className="gameArt">
-                <input type="text" id="editArt" onChange={createSplash_image} value={splash_image}/>  
+        <div className="DeckViewBackground">
+            <div className="DeckViewContainer">
+                <form className="deckDiv" onSubmit={handleSubmit}>    
+                    <div className="gameArt">
+                        <input type="text" id="editArt" onChange={createSplash_image} value={splash_image}/>  
+                    </div>
+                    <div className="gameDesc">
+                        <h2>Edit Deck Name</h2>
+                        <input type="text" id="editDeckName" onChange={createGame_name} value={game_name}/>  
+                        <h2>Edit Description</h2>
+                        <textarea onChange={createDescription} value={description}/>
+                    </div>
+                    <div className="gameRules">
+                        <h2>Edit Rules</h2>
+                        <textarea onChange={createRules} value={rules}/>
+                        <button id="saveButton" type='submit'>Save</button>
+                        <button id="cancelButton">Cancel</button>
+                    </div>
+                </form>
             </div>
-            <div className="gameDesc">
-                <h2>Edit Deck Name</h2>
-                <input type="text" id="editDeckName" onChange={createGame_name} value={game_name}/>  
-                <h2>Edit Description</h2>
-                <textarea onChange={createDescription} value={description}/>
-            </div>
-            <div className="gameRules">
-                <h2>Edit Rules</h2>
-                <textarea onChange={createRules} value={rules}/>
-                <button id="saveButton" type='submit'>Save</button>
-                <button id="cancelButton">Cancel</button>
-            </div>
-        </form>
+        </div>
     )
 }
 

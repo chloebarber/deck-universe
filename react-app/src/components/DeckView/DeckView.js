@@ -117,7 +117,7 @@ function DeckView(flag) {
         case "EDITDECK":
             return (
                 <>
-                <button onClick={(e) => DeckEdit(SelectedDeck.Deck)}>Edit Deck</button>
+                {/* <button onClick={(e) => DeckEdit(SelectedDeck.Deck)}>Edit Deck</button> */}
                 <button onClick={(e) => handleDeleteDeck(e)}>Delete Deck</button>
                 </>
             )
@@ -133,7 +133,6 @@ function DeckView(flag) {
     return (
         <div className="DeckViewBackground">
             <div className="DeckViewContainer">
-                {!toggleEditFlag && <button onClick={toggleEdit}>Edit</button>}
                 {SelectedDeck?.Deck && !toggleEditFlag && DeckInfo(SelectedDeck.Deck)}
                 {SelectedDeck?.Deck && toggleEditFlag && <DeckEdit deck={SelectedDeck.Deck}/>}
                             <Modal
@@ -145,6 +144,7 @@ function DeckView(flag) {
                             <CardEdit card={cardToEdit}/>
                         </Modal> 
                 {user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("EDITDECK")}
+                {!toggleEditFlag && <button onClick={toggleEdit}>Edit Deck</button>}
                 {user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("NEWCARD")}
                 <h3>Cards</h3>
                 <div className="cardsDiv">

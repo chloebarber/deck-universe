@@ -58,7 +58,7 @@ export const createDeckThunk = deck => async (dispatch) => {
     })
     if (response.ok) {
         const newDeck = await response.json()
-        await dispatch(deleteDeck())
+        await dispatch(loadDeck(newDeck))
     }
     return response
 }

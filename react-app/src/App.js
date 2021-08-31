@@ -9,6 +9,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import HomePage from './components/HomePage/HomePage';
 import DeckView from './components/DeckView/DeckView';
+import DeckEdit from './components/DeckView/DeckEdit/DeckEdit';
 import NavBar from './components/NavBar/NavBar';
 import DeckListing from './components/DeckListing/DeckListing';
 import MyGames from './components/MyGames/MyGames';

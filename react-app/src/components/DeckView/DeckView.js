@@ -71,12 +71,12 @@ function DeckView(flag) {
             dispatch(getDeckById(deckId))
         else{
             SelectedDeck.Deck = {}
-            SelectedDeck.Cards = {}
+            // SelectedDeck.Cards = {}
         }
     }, [dispatch, deckId]);
 
 
-    const [toggleEditFlag, setToggleEditFlag] = useState(false);
+    const [toggleEditFlag, setToggleEditFlag] = useState(flag ==='NEW');
 
     function toggleEdit() {
         setToggleEditFlag(!toggleEditFlag);
@@ -133,7 +133,7 @@ function DeckView(flag) {
     return (
         <div className="DeckViewBackground">
             <div className="DeckViewContainer">
-                <button onClick={toggleEdit}>Edit</button>
+                {!toggleEditFlag && <button onClick={toggleEdit}>Edit</button>}
                 {SelectedDeck?.Deck && !toggleEditFlag && DeckInfo(SelectedDeck.Deck)}
                 {SelectedDeck?.Deck && toggleEditFlag && <DeckEdit deck={SelectedDeck.Deck}/>}
                             <Modal

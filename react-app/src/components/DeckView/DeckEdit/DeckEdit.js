@@ -42,14 +42,14 @@ function DeckEdit(passedDeck){
         }
         else if(passedDeck?.id){
             newDeck.id = passedDeck.id
-            alert("edited a game")
             await dispatch(editDeckThunk(newDeck))
+            alert("Edited a game. Reloading...")
+            history.push(`/decks/${passedDeck.id}`);
         }
         else{
-            alert("created a new game")
             await dispatch(createDeckThunk(newDeck))
-            console.log(deckId)
-            history.push(`/decks/${deckId}`);
+            alert("Created a new game! Redirecting to your games collection")
+            history.push(`/my-games`);
         }
     
     };

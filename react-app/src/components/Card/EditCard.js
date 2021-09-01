@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { addCardThunk, editCardThunk } from '../../store/deck'
 import './Card.css'
 import './CardLayouts/SummoningGame.css'
+import './CardLayouts/ImageUpload.css'
 
 const CardEdit = (passedCard) => {
     //if the card edit form is passed a card, it prefills everything and does PUT
@@ -48,7 +49,7 @@ const CardEdit = (passedCard) => {
             classTemplate="freeform";
             break;
         case 4:
-            classTemplate=4;
+            classTemplate="imageUpload";
             break;
         case 5:
             classTemplate=5;

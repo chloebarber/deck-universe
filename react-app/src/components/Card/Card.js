@@ -3,6 +3,7 @@ import './Card.css'
 import './CardLayouts/SummoningGame.css'
 import './CardLayouts/ClassicGame.css'
 import './CardLayouts/FreeformGame.css'
+import './CardLayouts/ImageUpload.css'
 
 
 export default function CardInfo(card){
@@ -20,7 +21,7 @@ export default function CardInfo(card){
             template="freeform";
             break;
         case 4:
-            template=4;
+            template="imageUpload";
             break;
         case 5:
             template=5;

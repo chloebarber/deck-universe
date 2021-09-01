@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getDeckById, deleteCardThunk, editCardThunk, editDeckThunk, deleteDeckThunk } from '../../store/deck'
+import { getDeckById, deleteDeckThunk } from '../../store/deck'
 // import CardInfo from '../Card/Card.js'
 import DeckEdit from './DeckEdit/DeckEdit'
 import CardListingTable from './CardListingTable/CardListingTable'
@@ -46,43 +46,35 @@ function DeckView(flag) {
     }, [dispatch, deckId]);
 
 
-    const [toggleEditFlag, setToggleEditFlag] = useState(flag ==='NEW');
+    const [toggleEditFlag, setToggleEditFlag] = useState(flag === 'NEW');
 
     function toggleEdit() {
         setToggleEditFlag(!toggleEditFlag);
       }
 
+    const [toggleCardsFlag, setToggleCardsFlag] = useState(false);
 
-
-    function handleDeleteDeck(e) {
-        e.preventDefault();
-        return dispatch(deleteDeckThunk(SelectedDeck.Deck.id))
-            .catch(async (res) => {
-                await res.json();
-            });
+    function toggleCards() {
+        setToggleCardsFlag(!toggleCardsFlag);
     }
 
 
-    function ownerOptions(flag, card){
-        switch (flag){
-        case "EDITDECK":
-            return (
-                <>
-                {/* <button onClick={(e) => DeckEdit(SelectedDeck.Deck)}>Edit Deck</button> */}
-                <button onClick={(e) => handleDeleteDeck(e)}>Delete Deck</button>
-                </>
-            )}
-    }
+
+
 
     return (
         <div className="DeckViewBackground">
             <div className="DeckViewContainer">
                 {SelectedDeck?.Deck && !toggleEditFlag && DeckInfo(SelectedDeck.Deck)}
                 {SelectedDeck?.Deck && toggleEditFlag && <DeckEdit deck={SelectedDeck.Deck}/>}
-                {user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("EDITDECK")}
-                {!toggleEditFlag && <button onClick={toggleEdit}>Edit Deck</button>}
-                {user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("NEWCARD")}
-                <CardListingTable/>
+                {!toggleEditFlag && <button className="editDeckButton" onClick={toggleEdit}>Edit Deck</button>}
+                {toggleEditFlag && <button className="editDeckButton" onClick={toggleEdit}>Cancel</button>}
+                <div className="cardsHeadingContainer">
+                    <h1 id="cardsHeader">Cards</h1>
+                    {!toggleCardsFlag && <button className="cardsToggleButton" onClick={toggleCards}>Expand Card List</button>}
+                    {toggleCardsFlag && <button className="cardsToggleButton" onClick={toggleCards}>Hide Card List</button>}
+                    {toggleCardsFlag && <CardListingTable/>}
+                </div>
             </div>
         </div>
 

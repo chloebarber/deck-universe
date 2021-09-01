@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, Redirect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createDeckThunk, editDeckThunk } from '../../../store/deck';
+import { createDeckThunk, editDeckThunk, deleteDeckThunk } from '../../../store/deck';
+import { useHistory } from 'react-router-dom';
 import '../DeckView.css'
 
 
 
 function DeckEdit(passedDeck){
     passedDeck = passedDeck?.deck
-    console.log(passedDeck)
+
     const sessionUser = useSelector(state => state.session.user)
+    const deckId = useSelector(state => state.SelectedDeck?.Deck?.id)
     
     const [game_name, setGame_name] = useState(passedDeck?.game_name);
     const [splash_image, setSplash_image] = useState(passedDeck?.splash_image);
@@ -23,6 +24,7 @@ function DeckEdit(passedDeck){
     const createDescription = (e) => setDescription(e.target.value);
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
 
     const handleSubmit = async (e) => {
@@ -39,21 +41,30 @@ function DeckEdit(passedDeck){
         }
         else if(passedDeck?.id){
             newDeck.id = passedDeck.id
-            console.log("edited a game")
+            alert("edited a game")
             await dispatch(editDeckThunk(newDeck))
         }
         else{
-            console.log("created a new game")
+            alert("created a new game")
             await dispatch(createDeckThunk(newDeck))
+            console.log(deckId)
+            history.push(`/decks/${deckId}`);
         }
     
     };
+
+    function handleDeleteDeck(e) {
+        e.preventDefault();
+        return dispatch(deleteDeckThunk(passedDeck.id))
+            .catch(async (res) => {
+                await res.json();
+            });
+    }
     
     return (
-        <div className="DeckViewBackground">
-            <div className="DeckViewContainer">
                 <form className="deckDiv" onSubmit={handleSubmit}>    
                     <div className="gameArt">
+                        <h2>Splash Image URL</h2>
                         <input type="text" id="editArt" onChange={createSplash_image} value={splash_image}/>  
                     </div>
                     <div className="gameDesc">
@@ -66,11 +77,10 @@ function DeckEdit(passedDeck){
                         <h2>Edit Rules</h2>
                         <textarea onChange={createRules} value={rules}/>
                         <button id="saveButton" type='submit'>Save</button>
-                        <button id="cancelButton">Cancel</button>
+                        <button onClick={(e) => handleDeleteDeck(e)}>Delete Deck</button>
                     </div>
                 </form>
-            </div>
-        </div>
+
     )
 }
 

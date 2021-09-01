@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteCardThunk } from '../../../store/deck'
 import CardEdit from '../../Card/EditCard';
 import Modal from 'react-modal';
 import '../DeckView.css'
-import ownerOptions from '../DeckView'
 
 function CardListingTable(){
 
@@ -73,7 +71,7 @@ function CardListingTable(){
             <button onClick={closeModal}>close</button>
             <CardEdit card={cardToEdit}/>
         </Modal> 
-        <h3>Cards</h3>
+        {user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("NEWCARD")}
         <table className = "cardsListingTable">
             <thead>
                 <tr>

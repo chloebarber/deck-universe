@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteCardThunk } from '../../../store/deck'
 import CardEdit from '../../Card/EditCard';
 import Modal from 'react-modal';
-import '../DeckView.css'
+import '../DeckView.css';
+import './CardListingTable.css';
 
 function CardListingTable(){
 

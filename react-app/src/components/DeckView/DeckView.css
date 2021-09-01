@@ -59,43 +59,14 @@
     min-height: 150px;
 }
 
-/* .cardsDiv{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    justify-items: center;
-    align-items: center;
-    gap: 20px;
-} */
-
-.cardsListingTable{
-    table-layout: auto;
-    width: 80%;
-    overflow: hidden;
-    border: 5px solid black;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
-td {
-    max-width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
 
 .gameDesc textarea,
-.gameRules textarea,
-#editDeckName{
+.gameRules textarea{
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
     resize: vertical;
     background-color: whitesmoke;
-}
-
-#editDeckName{
-    font-size: xx-large;
-    text-align: center;
 }
 
 .cardsHeadingContainer{
@@ -113,28 +84,11 @@ td {
     background-color: lightblue
 }
 
-#saveButton,
-#cancelButton,
-#editDeckName{
-    width: 90%;
-}
-
-#saveButton{
-    margin-top: 50px;
-    margin-bottom: 20px;
-    background-color: green;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-#cancelButton{
-    background-color: red;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 5px;
-}
 
 .editDeckButton{
-    width: 100%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
     background-color: burlywood;
+    margin-bottom: 10px;
 }

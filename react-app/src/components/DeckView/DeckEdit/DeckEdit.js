@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createDeckThunk, editDeckThunk, deleteDeckThunk } from '../../../store/deck';
 import { useHistory } from 'react-router-dom';
 import '../DeckView.css'
+import './DeckEdit.css'
 
 
 
@@ -76,8 +77,10 @@ function DeckEdit(passedDeck){
                     <div className="gameRules">
                         <h2>Edit Rules</h2>
                         <textarea onChange={createRules} value={rules}/>
-                        <button id="saveButton" type='submit'>Save</button>
-                        <button onClick={(e) => handleDeleteDeck(e)}>Delete Deck</button>
+                        <div className="saveAndDelete">
+                            <button id="saveButton" type='submit'>Save Changes</button>
+                            <button id="deleteButton"onClick={(e) => handleDeleteDeck(e)}>Delete Deck</button>
+                        </div>
                     </div>
                 </form>
 

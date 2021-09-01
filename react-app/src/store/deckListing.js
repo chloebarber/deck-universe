@@ -9,7 +9,16 @@ const loadDecks = (decks) => {
 
 export const getDeckListing = () => async (dispatch) => {
     const response = await fetch(`/api/decks`)
+    if (response.ok) {
+        const decks = await response.json()
+        await dispatch(loadDecks(decks))
+        return response
+    }
+}
 
+export const getFilteredDeckListing = (filter) => async (dispatch) => {
+    const response = await fetch(`/api/decks/filter/${filter.filter}`)
+    console.log(filter.filter)
     if (response.ok) {
         const decks = await response.json()
         await dispatch(loadDecks(decks))

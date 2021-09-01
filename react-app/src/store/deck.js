@@ -1,7 +1,9 @@
 const GET_DECK = 'decks/GET_DECK'
+const DELETE_DECK = 'decks/DELETE_DECK'
 const ADD_CARD = 'card/ADD_CARD';
 const DELETE_CARD = 'card/DELETE_CARD'
 const EDIT_CARD = 'card/EDIT_CARD'
+
 
 const addCard = (card) => {
     return {
@@ -30,7 +32,11 @@ const loadDeck = (deck) => {
     }
 }
 
-
+const deleteDeck = (deck) => {
+    return {
+        type: DELETE_DECK,
+    }
+}
 
 export const getDeckById = (deckId) => async (dispatch) => {
     const response = await fetch(`/api/decks/${deckId}`)
@@ -40,6 +46,47 @@ export const getDeckById = (deckId) => async (dispatch) => {
         await dispatch(loadDeck(deck))
         return response
     }
+}
+
+export const createDeckThunk = deck => async (dispatch) => {
+    const response = await fetch(`/api/decks`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(deck)
+    })
+    if (response.ok) {
+        const newDeck = await response.json()
+        await dispatch(loadDeck(newDeck))
+    }
+    return response
+}
+
+export const editDeckThunk = deck => async (dispatch) => {
+    const response = await fetch(`/api/decks/${deck.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(deck)
+    })
+    if (response.ok) {
+        const editedDeck = await response.json();
+        dispatch(loadDeck(editedDeck))
+    }
+    return response
+}
+
+export const deleteDeckThunk = id => async (dispatch) => {
+    const response = await fetch(`/api/decks/${id}`, {
+        method: "DELETE",
+    })
+    if (response.ok) {
+        const oldDeck = await response.json()
+        dispatch(deleteCard(oldDeck))
+    }
+    return response
 }
 
 export const addCardThunk = card => async (dispatch) => {
@@ -114,6 +161,12 @@ export default function SelectedDeck(state = initialState, action) {
                 if (newState.Cards[i].id === action.card.id)
                     newState.Cards[i] = action.card
             }
+            return newState;
+        }
+
+        case DELETE_DECK: {
+            newState = {...state};
+            newState.SelectedDeck.Deck = null;
             return newState;
         }
         

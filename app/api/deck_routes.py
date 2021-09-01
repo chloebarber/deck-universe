@@ -69,4 +69,4 @@ def delete_deck(id):
     db.session.delete(oldDeck)
     db.session.commit()
 
-    return oldDeck.to_dict()
+    return {'Deck': oldDeck.to_dict()}

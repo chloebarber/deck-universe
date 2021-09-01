@@ -48,18 +48,17 @@ function DeckEdit(passedDeck){
         }
         else{
             await dispatch(createDeckThunk(newDeck))
-            alert("Created a new game! Redirecting to your games collection")
+            alert("Created a new game! Redirecting to your games collection...")
             history.push(`/my-games`);
         }
     
     };
 
-    function handleDeleteDeck(e) {
+    async function handleDeleteDeck(e) {
         e.preventDefault();
-        return dispatch(deleteDeckThunk(passedDeck.id))
-            .catch(async (res) => {
-                await res.json();
-            });
+        await dispatch(deleteDeckThunk(passedDeck.id))
+        alert("Deck deleted. Redirecting to your games collection...")
+        history.push(`/my-games`);
     }
     
     return (

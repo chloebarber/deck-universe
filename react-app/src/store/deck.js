@@ -84,7 +84,7 @@ export const deleteDeckThunk = id => async (dispatch) => {
     })
     if (response.ok) {
         const oldDeck = await response.json()
-        dispatch(deleteCard(oldDeck))
+        dispatch(deleteDeck(oldDeck))
     }
     return response
 }
@@ -166,7 +166,7 @@ export default function SelectedDeck(state = initialState, action) {
 
         case DELETE_DECK: {
             newState = {...state};
-            newState.SelectedDeck.Deck = null;
+            newState.SelectedDeck = null;
             return newState;
         }
         

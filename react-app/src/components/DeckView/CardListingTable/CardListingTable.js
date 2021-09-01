@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteCardThunk } from '../../../store/deck'
 import CardEdit from '../../Card/EditCard';
 import Modal from 'react-modal';
+import CardInfo from '../../Card/Card'
 import '../DeckView.css';
 import './CardListingTable.css';
 
@@ -50,29 +51,30 @@ function CardListingTable(){
         setIsOpen(false);
       }
 
-      const customStyles = {
-        content: {
-          top: '50%',
-          left: '50%',
-          right: '50%',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-        },
-      };
+    //   const customStyles = {
+    //     content: {
+    //       top: '50%',
+    //       left: '50%',
+    //       right: '50%',
+    //       bottom: 'auto',
+    //       marginRight: '-50%',
+    //       transform: 'translate(-50%, -50%)',
+    //     },
+    //   };
     //------------------------
 
     return (
     <div className="cardsDiv">
-        <Modal
+        <Modal className="cardEditModal"
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
-            style={customStyles}
+            // style={customStyles}
             contentLabel="Edit Card">
-            <button onClick={closeModal}>close</button>
             <CardEdit card={cardToEdit}/>
+            <button onClick={closeModal}>close</button>
         </Modal> 
         {user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("NEWCARD")}
+        {/* {SelectedDeck?.Cards?.map(card => (<CardInfo card={card}/>))} */}
         <table className = "cardsListingTable">
             <thead>
                 <tr>

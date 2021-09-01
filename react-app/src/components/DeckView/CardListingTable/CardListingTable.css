@@ -14,3 +14,14 @@ td {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.cardEditModal{
+    margin: 10%;
+    height: 80%;
+}
+
+.cardEditContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 

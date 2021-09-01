@@ -2,14 +2,15 @@
     border: 2px solid black;
     margin: 10px;
     border-radius: 10px;
-    width: 100%;
+    width: 30%;
+    aspect-ratio: 2 / 3;
     min-height: 200px;
 }
 
-.CardEdit{
+/* .CardEdit{
     display: flex;
     flex-direction: column;
-}
+} */
 
 .CardEdit div{
     margin: 10px;

@@ -15,7 +15,7 @@
     margin-top: 20px;
 }
 
-.DeckViewContainer * *{
+.DeckViewContainer > * > *{
     background-color: grey;
     box-sizing: border-box;
 }

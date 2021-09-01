@@ -58,7 +58,7 @@ def edit_deck(id):
         form.populate_obj(oldDeck)
         
         db.session.commit()
-        return oldDeck.to_dict()
+        return {'Deck': oldDeck.to_dict(), 'Cards': [card.to_dict() for card in oldDeck.cards]}
 
     return {'error': 'UH OH ERROR'}
 

@@ -57,7 +57,7 @@ function App() {
         <Route path='/decks/new' exact={true} >
         <div className="DeckViewBackground">
             <div className="DeckViewContainer">
-              <DeckEdit flag="NEW"/>
+              <DeckEdit/>
           </div>
         </div>
         </Route>

@@ -1,0 +1,54 @@
+.mapGame{
+    display: grid;
+    grid-template-areas: 
+                    "topleft north north"
+                    "west art east"
+                    "south south south";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    gap: 5px;
+    background-color: white;
+}
+
+.mapGame > *{
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    /* align-content: center; */
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.mapGame > .cardName{
+    grid-area: topleft;
+    text-align: left;
+}
+
+.mapGame > .art{
+    grid-area: art;
+}
+.mapGame > .card_text_slot_1{
+    grid-area: north;
+    text-align: center;
+}
+.mapGame > .card_text_slot_2{
+    grid-area: east;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.mapGame > .card_text_slot_3{
+    grid-area: west;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.mapGame > .card_text_slot_4{
+    grid-area: south;
+    text-align: center;
+}
+.mapGame > .card_text_slot_5{
+    display: none;
+}

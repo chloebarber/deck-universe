@@ -5,6 +5,7 @@ import { addCardThunk, editCardThunk } from '../../store/deck'
 import './Card.css'
 import './CardLayouts/SummoningGame.css'
 import './CardLayouts/ImageUpload.css'
+import './CardLayouts/MapGame.css'
 
 const CardEdit = (passedCard) => {
     //if the card edit form is passed a card, it prefills everything and does PUT
@@ -52,7 +53,7 @@ const CardEdit = (passedCard) => {
             classTemplate="imageUpload";
             break;
         case 5:
-            classTemplate=5;
+            classTemplate="mapGame";
             break;
         default:
             classTemplate="default";

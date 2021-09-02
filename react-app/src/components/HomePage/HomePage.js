@@ -22,6 +22,7 @@ function HomePage() {
                 <Link to='/decks/1'>View Deck 1</Link><p/>
                 <Link to='/decks/2'>View Deck 2</Link><p/>
                 <Link to='/decks/5'>View Deck 5</Link><p/>
+                <a href='https://github.com/chloebarber/deck-universe'>GitHub Repository</a>
             </div>
         </div>
 

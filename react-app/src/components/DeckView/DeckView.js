@@ -66,8 +66,8 @@ function DeckView(flag) {
         <div className="DeckViewBackground">
             <div className="DeckViewContainer">
                 {SelectedDeck?.Deck && !toggleEditFlag && DeckInfo(SelectedDeck.Deck)}
-                {SelectedDeck?.Deck && toggleEditFlag && (user.user?.id === SelectedDeck.Deck?.owner_id) && <DeckEdit deck={SelectedDeck.Deck}/>}
-                {!toggleEditFlag && <button className="editDeckButton" onClick={toggleEdit}>Edit Deck</button>}
+                {SelectedDeck?.Deck && toggleEditFlag && <DeckEdit deck={SelectedDeck.Deck}/>}
+                {!toggleEditFlag && (user.user?.id === SelectedDeck.Deck?.owner_id) && <button className="editDeckButton" onClick={toggleEdit}>Edit Deck</button>}
                 {toggleEditFlag && <button className="editDeckButton" onClick={toggleEdit}>Cancel</button>}
                 <div className="cardsHeadingContainer">
                     <h1 id="cardsHeader">Cards</h1>

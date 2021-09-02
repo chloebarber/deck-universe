@@ -1,0 +1,52 @@
+.summoningGame{
+    display: grid;
+    grid-template-areas: 
+                    "upperleft uppercenter upperright"
+                    "art art art"
+                    "maintext maintext maintext"
+                    "bottomleft bottomcenter bottomright";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 3fr 3fr 1fr;
+    gap: 5px;
+    background-color: white;
+}
+
+.summoningGame > *{
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    /* align-content: center; */
+    align-items: center;
+}
+
+.summoningGame > .cardName{
+    grid-area: upperleft;
+    text-align: left;
+}
+
+.summoningGame > .art{
+    grid-area: art;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.summoningGame > .card_text_slot_1{
+    grid-area: maintext;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+}
+.summoningGame > .card_text_slot_2{
+    grid-area: upperright;
+    text-align: right;
+}
+.summoningGame > .card_text_slot_3{
+    grid-area: bottomleft;
+    text-align: left;
+}
+.summoningGame > .card_text_slot_4{
+    grid-area: bottomright;
+    text-align: right;
+}
+.summoningGame > .card_text_slot_5{
+    display: none;
+}

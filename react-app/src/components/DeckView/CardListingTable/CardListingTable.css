@@ -1,0 +1,27 @@
+.cardsListingTable{
+    table-layout: auto;
+    width: 80%;
+    overflow: hidden;
+    border: 5px solid black;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cardEditModal{
+    margin: 10%;
+    height: 80%;
+}
+
+.cardEditContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 

@@ -12,6 +12,7 @@ class Card(db.Model):
     card_text_slot_3 = db.Column(db.String(255))
     card_text_slot_4 = db.Column(db.String(255))
     card_text_slot_5 = db.Column(db.String(255))
+    template = db.Column(db.Integer)
 
     deck = db.relationship("Deck", back_populates="cards")
 
@@ -26,5 +27,6 @@ class Card(db.Model):
             'card_text_slot_3': self.card_text_slot_3,
             'card_text_slot_4': self.card_text_slot_4,
             'card_text_slot_5': self.card_text_slot_5,
+            'template': self.template,
         }
     

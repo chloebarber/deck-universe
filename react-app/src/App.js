@@ -8,8 +8,11 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import HomePage from './components/HomePage/HomePage';
-import DeckView from './components/Deck/Deck';
+import DeckView from './components/DeckView/DeckView';
+import DeckEdit from './components/DeckView/DeckEdit/DeckEdit';
 import NavBar from './components/NavBar/NavBar';
+import DeckListing from './components/DeckListing/DeckListing';
+import MyGames from './components/MyGames/MyGames';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,6 +47,19 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <HomePage />
+        </Route>
+        <Route path='/decks' exact={true} >
+          <DeckListing />
+        </Route>
+        <Route path='/my-games' exact={true} >
+          <MyGames />
+        </Route>
+        <Route path='/decks/new' exact={true} >
+        <div className="DeckViewBackground">
+            <div className="DeckViewContainer">
+              <DeckEdit/>
+          </div>
+        </div>
         </Route>
         <Route path='/decks/:deckId' exact={true} >
           <DeckView />

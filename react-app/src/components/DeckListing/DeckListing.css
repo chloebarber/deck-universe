@@ -1,0 +1,49 @@
+.DeckListingContainer{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: rgba(119, 119, 119, 0.64);
+    margin-bottom: 100px;
+    padding: 20px;
+}
+
+.deckItem{
+    border: 5px solid black;
+    border-radius: 20px;
+    display: grid;
+    grid-template-areas: "pic name name name"
+                    "pic desc desc desc";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    max-height: 400px;
+    background: gray;
+}
+
+.gameSplash{
+    grid-area: pic;
+    background-color: blue;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-left: 20px;
+}
+
+.gameSplash > img{
+    height: 100%;
+    width: 100%;
+}
+
+.gameName{
+    grid-area: name;
+    margin-left: 50px;
+    border-bottom: 2px solid black;
+}
+
+.gameDescription{
+    grid-area: desc;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}

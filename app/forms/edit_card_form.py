@@ -5,7 +5,8 @@ from wtforms.validators import DataRequired, ValidationError
 class EditCardForm(FlaskForm):
     game_id = IntegerField("game_id")
     
-    card_name = StringField("card_name", DataRequired())
+    v = [DataRequired()]
+    card_name = StringField("card_name", v)
     art = StringField("art")
     card_text_slot_1 = StringField("Slot 1: ")
     card_text_slot_2 = StringField("Slot 2: ")

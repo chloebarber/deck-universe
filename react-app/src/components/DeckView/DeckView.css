@@ -1,0 +1,94 @@
+.DeckViewBackground{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: rgba(119, 119, 119, 0.64);
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 80px;
+}
+
+.DeckViewContainer{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+}
+
+.DeckViewContainer > * > *{
+    background-color: grey;
+    box-sizing: border-box;
+}
+
+.deckDiv{
+    display: grid;
+    grid-template-areas: "pic desc desc"
+                    "pic desc desc"
+                    "rules rules rules"
+                    "rules rules rules";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 5px;
+}
+
+.deckDiv > *{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gameArt{
+    display: flex;
+    border: 2px solid black;
+    grid-area: pic;
+    height: 100%;
+    width: 100%;
+}
+
+.gameDesc{
+    border: 2px solid black;
+    grid-area: desc;
+    align-self: center;
+    height: 100%;
+    width: 100%;
+}
+
+.gameRules{
+    border: 2px solid black;
+    grid-area: rules;
+    min-height: 150px;
+}
+
+
+.gameDesc textarea,
+.gameRules textarea{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    resize: vertical;
+    background-color: whitesmoke;
+}
+
+.cardsHeadingContainer{
+    background-color: grey;
+    border: 2px solid black;
+    padding-top: 20px;
+}
+.cardsHeadingContainer > h1{
+    text-align: center;
+}
+.cardsHeadingContainer > button{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: lightblue
+}
+
+
+.editDeckButton{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: burlywood;
+    margin-bottom: 10px;
+}

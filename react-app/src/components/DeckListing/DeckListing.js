@@ -24,7 +24,8 @@ function DeckListing(filter) {
             {DeckListing.Decks?.map(deck => (
                 <div className="deckItem">
                     <Link className="gameSplash" to={`/decks/${deck.id}`}>
-                        <img src={deck.splash_image} alt={deck.game_name}/>
+                        {deck.splash_image && <img src={deck.splash_image} alt={deck.game_name}/>}
+                        {(deck.splash_image == '') && <img className="gameArt" src={'https://media.istockphoto.com/vectors/playing-card-back-side-vector-id133281126'} alt={deck.game_name}/>}
                     </Link>
                     <h1 className="gameName">
                         <Link to={`/decks/${deck.id}`}>{deck.game_name}</Link>

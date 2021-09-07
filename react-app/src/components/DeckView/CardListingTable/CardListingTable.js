@@ -71,7 +71,7 @@ function CardListingTable(){
             // style={customStyles}
             contentLabel="Edit Card">
             <CardEdit card={cardToEdit} setIsOpen={setIsOpen}/>
-            <button onClick={closeModal}>close</button>
+            <button id="modalCloseButton" onClick={closeModal}>Close</button>
         </Modal> 
         {user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("NEWCARD")}
         {/* {SelectedDeck?.Cards?.map(card => (<CardInfo card={card}/>))} */}

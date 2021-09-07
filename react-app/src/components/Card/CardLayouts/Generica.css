@@ -1,0 +1,6 @@
+.generica {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

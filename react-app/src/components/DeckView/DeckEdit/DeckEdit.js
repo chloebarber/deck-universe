@@ -68,13 +68,13 @@ function DeckEdit(passedDeck){
                         <input type="text" id="editArt" onChange={createSplash_image} value={splash_image}/>  
                     </div>
                     <div className="gameDesc">
-                        <h2>Edit Deck Name</h2>
+                        <h2>Deck Name</h2>
                         <input type="text" id="editDeckName" onChange={createGame_name} value={game_name}/>  
-                        <h2>Edit Description</h2>
+                        <h2>Description</h2>
                         <textarea onChange={createDescription} value={description}/>
                     </div>
                     <div className="gameRules">
-                        <h2>Edit Rules</h2>
+                        <h2>Rules</h2>
                         <textarea onChange={createRules} value={rules}/>
                         <div className="saveAndDelete">
                             <button id="saveButton" type='submit'>Save Changes</button>

@@ -6,6 +6,7 @@ import './Card.css'
 import './CardLayouts/SummoningGame.css'
 import './CardLayouts/ImageUpload.css'
 import './CardLayouts/MapGame.css'
+import './CardLayouts/Generica.css'
 
 const CardEdit = (passedCard) => {
     //if the card edit form is passed a card, it prefills everything and does PUT
@@ -49,7 +50,7 @@ const CardEdit = (passedCard) => {
             classTemplate="classicGame";
             break;
         case 3:
-            classTemplate="freeform";
+            classTemplate="generica";
             break;
         case 4:
             classTemplate="imageUpload";
@@ -58,7 +59,7 @@ const CardEdit = (passedCard) => {
             classTemplate="mapGame";
             break;
         default:
-            classTemplate="default";
+            classTemplate="generica";
     }
 
     const handleSubmit = async (e) => {
@@ -91,34 +92,51 @@ const CardEdit = (passedCard) => {
         }
     
     };
+        // <div className="editWrapper">
+        //     <div className="templateChoice">
+        //         <h2>Card Template</h2>
+        //         <label for="generica">Generica</label>
+        //         <input type="checkbox" id="generica" name="generica"/>
+        //         <label for="summoningGame">Summoning Game</label>
+        //         <input type="checkbox" id="summoningGame" name="summoningGame"/>
+        //         <label for="classicGame">Classic Game</label>
+        //         <input type="checkbox" id="classicGame" name="classicGame"/>
+        //         <label for="mapGame">Map Game</label>
+        //         <input type="checkbox" id="mapGame" name="mapGame"/>
+        //         <label for="freeform">Freeform</label>
+        //         <input type="checkbox" id="freeform" name="freeform"/>
+        //         <label for="imageUpload">Image Upload</label>
+        //         <input type="checkbox" id="imageUpload" name="imageUpload"/>
+        //     </div>
+        //        </div>
     return (
-        <form className="cardEditContainer" onSubmit={handleSubmit}>
-            <div className={`CardInfo CardEdit ${classTemplate}`}>
-                <div className="cardName">
-                    <label>Name: </label>
-                    <input type="text" onChange={createCard_name} value={card_name}/>
-                </div><div className="art">
-                    <label>Art: </label>
-                    <input type="text" onChange={createArt} value={art}/>
-                </div><div className="card_text_slot_1">
-                    <label>Main Text: </label>
-                    <textarea onChange={createCard_text_slot_1} value={card_text_slot_1}/>
-                </div><div className="card_text_slot_2">
-                    <label>Text Slot 2: </label>
-                    <input type="text" onChange={createCard_text_slot_2} value={card_text_slot_2}/>
-                </div><div className="card_text_slot_3">
-                    <label>Text Slot 3: </label>
-                    <input type="text" onChange={createCard_text_slot_3} value={card_text_slot_3}/>
-                </div><div className="card_text_slot_4">
-                    <label>Text Slot 4: </label>
-                    <input type="text" onChange={createCard_text_slot_4} value={card_text_slot_4}/>
-                </div><div className="card_text_slot_5">
-                    <label>Text Slot 5: </label>
-                    <input type="text" onChange={createCard_text_slot_5} value={card_text_slot_5}/>
+            <form className="cardEditContainer" onSubmit={handleSubmit}>
+                <div className={`CardInfo CardEdit ${classTemplate}`}>
+                    <div className="cardName">
+                        <label>Name: </label>
+                        <input type="text" onChange={createCard_name} value={card_name}/>
+                    </div><div className="art">
+                        <label>Art: </label>
+                        <input type="text" onChange={createArt} value={art}/>
+                    </div><div className="card_text_slot_1">
+                        <label>Main Text: </label>
+                        <textarea onChange={createCard_text_slot_1} value={card_text_slot_1}/>
+                    </div><div className="card_text_slot_2">
+                        <label>Text Slot 2: </label>
+                        <input type="text" onChange={createCard_text_slot_2} value={card_text_slot_2}/>
+                    </div><div className="card_text_slot_3">
+                        <label>Text Slot 3: </label>
+                        <input type="text" onChange={createCard_text_slot_3} value={card_text_slot_3}/>
+                    </div><div className="card_text_slot_4">
+                        <label>Text Slot 4: </label>
+                        <input type="text" onChange={createCard_text_slot_4} value={card_text_slot_4}/>
+                    </div><div className="card_text_slot_5">
+                        <label>Text Slot 5: </label>
+                        <input type="text" onChange={createCard_text_slot_5} value={card_text_slot_5}/>
+                    </div>
                 </div>
-            </div>
-            <button className='submitButton' type='submit'>Submit</button>
-        </form>
+                <button className='submitButton' type='submit'>Submit</button>
+            </form>
     )
 }
 

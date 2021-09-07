@@ -10,7 +10,8 @@ import './DeckView.css';
 function DeckInfo(Deck){
     return (
         <div className="deckDiv">
-            <img className="gameArt" src={Deck.splash_image} alt={Deck.game_name}/>
+            {Deck.splash_image && <img className="gameArt" src={Deck.splash_image} alt={Deck.game_name}/>}
+            {(Deck.splash_image == '') && <img className="gameArt" src={'https://media.istockphoto.com/vectors/playing-card-back-side-vector-id133281126'} alt={Deck.game_name}/>}
             <div className="gameDesc">
                 <h1>{Deck.game_name}</h1>
                 <div>{Deck.description}</div>

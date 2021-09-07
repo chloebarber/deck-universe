@@ -5,6 +5,7 @@ import './CardLayouts/ClassicGame.css'
 import './CardLayouts/FreeformGame.css'
 import './CardLayouts/ImageUpload.css'
 import './CardLayouts/MapGame.css'
+import './CardLayouts/Generica.css'
 
 export default function CardInfo(card){
     card = card.card
@@ -18,7 +19,7 @@ export default function CardInfo(card){
             template="classicGame";
             break;
         case 3:
-            template="freeform";
+            template="generica";
             break;
         case 4:
             template="imageUpload";
@@ -27,7 +28,7 @@ export default function CardInfo(card){
             template="mapGame";
             break;
         default:
-            template="default";
+            template="generica";
     }
 
     return (

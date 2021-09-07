@@ -8,4 +8,6 @@
 
 .homeInfoBox{
     background-color: grey;
+    padding: 50px;
+    border: 5px outset
 }

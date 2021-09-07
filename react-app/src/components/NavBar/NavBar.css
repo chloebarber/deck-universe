@@ -1,7 +1,18 @@
 .navbar-container{
-    background-color: darkslategray;
+    background-color: darkblue;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 10px 10px;
+}
+
+.navbar-container > *{
+    color: yellow;
+    background-image: url(../../backgrounds/backg3.jpg);
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: large;
+    text-shadow: white;
 }

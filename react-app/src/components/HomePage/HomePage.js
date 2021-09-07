@@ -18,8 +18,9 @@ function HomePage() {
     return (
         <div className="homepage-container">
             <div className="homeInfoBox">
-                <h1>Welcome to Deck Universe!</h1>
-                <p>Deck Universe is a way to share and print open-source card games!</p>
+                <h1 className="welcomeTitle">Welcome to Deck Universe!</h1>
+                <p>Deck Universe is a site dedicated to creating and sharing open-source card games. </p>
+                <p>Whether you're an aspiring card game designer or just someone looking for a new game to play tonight - Deck Universe has something for you!</p>
                 <a href='https://github.com/chloebarber/deck-universe'>GitHub Repository</a>
             </div>
         </div>

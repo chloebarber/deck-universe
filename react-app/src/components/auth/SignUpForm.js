@@ -21,6 +21,9 @@ const SignUpForm = () => {
         setErrors(data)
       }
     }
+    else{
+      alert("Password does not match Confirm Password")
+    }
   };
 
   const updateUsername = (e) => {

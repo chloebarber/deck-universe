@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getDeckListing, getFilteredDeckListing } from '../../store/deckListing';
+import { getDeckListing, getDecksByUser } from '../../store/deckListing';
 import './DeckListing.css';
 
 
 function DeckListing(filter) {
     const DeckListing = useSelector((state) => state.DeckListing)
+    const sessionUser = useSelector(state => state.session?.user)
     const dispatch = useDispatch()
 
 
     useEffect(() => {
-        if(filter)
-            dispatch(getFilteredDeckListing(filter))
+        if(filter.filter === "ByUser")
+            dispatch(getDecksByUser(sessionUser.id))
         else
             dispatch(getDeckListing())
     }, [dispatch]);

@@ -11,7 +11,7 @@ function MyGames() {
     return (
         <div className="myGamesContainer">
             <h1 className="myGamesTitle">My Games</h1>
-            <DeckListing filter={"ME"}/>
+            <DeckListing filter={"ByUser"}/>
         </div>
     )
 }

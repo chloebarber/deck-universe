@@ -70,7 +70,7 @@ function CardListingTable(){
             onRequestClose={closeModal}
             // style={customStyles}
             contentLabel="Edit Card">
-            <CardEdit card={cardToEdit}/>
+            <CardEdit card={cardToEdit} setIsOpen={setIsOpen}/>
             <button onClick={closeModal}>close</button>
         </Modal> 
         {user.user?.id === SelectedDeck.Deck?.owner_id && ownerOptions("NEWCARD")}

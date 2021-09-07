@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import "./Login-Signup.css"
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -44,6 +45,7 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={onSignUp}>
+      <h1>Join the sensation!</h1>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>

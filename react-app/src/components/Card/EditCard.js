@@ -11,6 +11,8 @@ const CardEdit = (passedCard) => {
     //if the card edit form is passed a card, it prefills everything and does PUT
     //if it is not passed a card, it prefills nothing and does POST
 
+    const setIsOpen = passedCard.setIsOpen;
+
     if (passedCard)
         passedCard = passedCard.card; //worst destructuring ever
 
@@ -80,10 +82,12 @@ const CardEdit = (passedCard) => {
             newCard.id = passedCard.id
             console.log("edited a card")
             await dispatch(editCardThunk(newCard))
+            setIsOpen(false)
         }
         else{
             console.log("created a new card")
             await dispatch(addCardThunk(newCard))
+            setIsOpen(false)
         }
     
     };

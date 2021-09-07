@@ -28,16 +28,22 @@ def add_deck():
 
     return {'error': 'UH OH ERROR'}
 
-
-@deck_routes.route('/filter/<filter>')
-def filtered_deck_listing(filter):
-    if (filter == "ME"):
-        decks = Deck.query.get(3)
-        return {'Decks': [decks.to_dict()]}
-    else:
-        decks = Deck.query.all()
-    # print(games)
+@deck_routes.route('/decksByUser/<int:id>')
+def filtered_deck_listing(id):
+    decks = Deck.query.filter(Deck.owner_id == id)
+    # return {'Decks': [decks.to_dict()]}
     return {'Decks': [deck.to_dict() for deck in decks]}
+
+
+# @deck_routes.route('/filter/<filter>')
+# def filtered_deck_listing(filter):
+#     if (filter == "ME"):
+#         decks = Deck.query.get(3)
+#         return {'Decks': [decks.to_dict()]}
+#     else:
+#         decks = Deck.query.all()
+#     # print(games)
+#     return {'Decks': [deck.to_dict() for deck in decks]}
 
 
 #------------DECK BY ID ROUTES

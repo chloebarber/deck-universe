@@ -16,7 +16,7 @@ function CardListingTable(){
     function ownerOptions(flag, card){
         switch (flag){
         case "NEWCARD":
-            return (<button onClick={(e) => editModalClicked(e, {})}>New Card</button>)
+            return (<button className="newCardButton" onClick={(e) => editModalClicked(e, {})}>Create New Card</button>)
         case "EDITCARD":
             return (<button onClick={(e) => editModalClicked(e, card)}>Edit Card</button>)
         case "DELETECARD":

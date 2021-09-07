@@ -47,7 +47,7 @@ const CardEdit = (passedCard) => {
             classTemplate="summoningGame";
             break;
         case 2:
-            classTemplate="classicGame";
+            classTemplate="generica"//"classicGame";
             break;
         case 3:
             classTemplate="generica";

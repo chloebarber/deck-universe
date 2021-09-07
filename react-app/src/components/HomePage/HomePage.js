@@ -1,7 +1,6 @@
 import React from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { getGames } from '../../store/game'
-import { Link } from 'react-router-dom';
 import './HomePage.css';
 
 

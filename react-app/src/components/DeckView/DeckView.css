@@ -77,11 +77,18 @@
 .cardsHeadingContainer > h1{
     text-align: center;
 }
-.cardsHeadingContainer > button{
+.cardsToggleButton{
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
-    background-color: lightblue
+    background-color: yellowgreen;
+    height: 50px;
+}
+.printButton{
+    width: 45%;
+    margin-right: 5%;
+    background-color: white;
+    height: 50px;
 }
 
 

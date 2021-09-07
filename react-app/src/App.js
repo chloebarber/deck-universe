@@ -12,6 +12,7 @@ import DeckView from './components/DeckView/DeckView';
 import DeckEdit from './components/DeckView/DeckEdit/DeckEdit';
 import NavBar from './components/NavBar/NavBar';
 import DeckListing from './components/DeckListing/DeckListing';
+import PrintListing from './components/PrintListing/PrintListing';
 import MyGames from './components/MyGames/MyGames';
 
 function App() {
@@ -63,6 +64,9 @@ function App() {
         </Route>
         <Route path='/decks/:deckId' exact={true} >
           <DeckView />
+        </Route>
+        <Route path='/decks/:deckId/printable' exact={true} >
+          <PrintListing />
         </Route>
       </Switch>
     </BrowserRouter>

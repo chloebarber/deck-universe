@@ -1,0 +1,8 @@
+.printListingWrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.printListingWrapper > CardInfo{
+    width: 200px;
+}

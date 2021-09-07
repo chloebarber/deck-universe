@@ -16,7 +16,7 @@ export default function CardInfo(card){
             template="summoningGame";
             break;
         case 2:
-            template="classicGame";
+            template="generica"//"classicGame";
             break;
         case 3:
             template="generica";

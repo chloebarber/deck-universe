@@ -1,15 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import CardInfo from '../Card/Card.js'
 
-function PrintListing(cardList){
+function PrintListing(){
+
+    const SelectedDeck = useSelector((state) => state.SelectedDeck)
     return(
-    <>
-        {cardList.map(card => (
-            <>
+    <div className="printListingWrapper">
+        {SelectedDeck?.Cards?.map(card => (
             <CardInfo card={card} />
-            </>
         ))}
-    </>
+    </div>
     )
 }
 
